@@ -1,0 +1,106 @@
+main {
+    margin: auto;
+    width: 900px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 900px;
+    height: 100px;
+    margin: 0;
+    background-color: #5cbdb9;
+    color: white;
+    font-size: 60px;
+    border: 3px solid #5cbdb9;
+}
+
+section {
+    width: 900px;
+    height: 400px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    border: 3px solid #5cbdb9;
+}
+
+form {
+    font-size: 25px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+input {
+    height: 70px;
+    width: 150px;
+    border: 3px solid #5cbdb9;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    color: #5cbdb9;
+}
+
+input::placeholder {
+    font-weight: bold;
+    opacity: 0.75;
+    font-size: 40px;
+    color: #5cbdb9;
+  }
+
+button {
+    height: 75px;
+    width: 75px;
+    border-radius: 45px;
+    border: 3px solid #5cbdb9;
+    font-size: 22px;
+}
+
+.button-start {
+    background-color: #5cbdb9;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button-start:hover {
+    background-color: white;
+    color: #5cbdb9;
+}
+
+.button-pause {
+    display: none;
+    border-color: rgb(175, 68, 68);
+    background-color: rgb(175, 68, 68);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-pause:hover {
+    background-color: rgb(255, 94, 94);
+}
+
+.button-reset {
+    background-color: white;
+    color: #5cbdb9;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.button-reset:hover {
+    background-color: azure;
+    color: #4ea19f;
+    border-color: #4ea19f;
+}
+
