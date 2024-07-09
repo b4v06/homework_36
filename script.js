@@ -4,6 +4,10 @@ const buttonStart = document.querySelector(".button-start");
 const buttonPause = document.querySelector(".button-pause");
 const buttonReset = document.querySelector(".button-reset");
 
+let rememberHours = null;
+let rememberMinutes = null;
+let rememberSeconds = null;
+
 let inputHours = document.querySelector(".input-hours");
 let inputMinutes = document.querySelector(".input-minutes");
 let inputSeconds = document.querySelector(".input-seconds");
@@ -14,8 +18,16 @@ document.querySelector(".input-seconds").value = 0;
 
 let interval;
 
+const progressBar = document.querySelector("progress");
+progressBar.value = 0;
+
 buttonStart.addEventListener("click", (event) => {
     event.preventDefault();
+    progressBar.classList.remove("progress-red");
+    progressBar.classList.add("progress-green");
+    rememberHours = document.querySelector(".input-hours").value;
+    rememberMinutes = document.querySelector(".input-minutes").value;
+    rememberSeconds = document.querySelector(".input-seconds").value;
     buttonStart.style.display = "none";
     buttonPause.style.display = "block";
     inputHours.disabled = true;
@@ -34,6 +46,7 @@ buttonStart.addEventListener("click", (event) => {
             inputSeconds.disabled = false;
             clearInterval(interval);
         } else {
+            progressBar.value = (Number(valueHours) * 60 * 60 + Number(valueMinutes) * 60 + Number(valueSeconds))*100/(Number(rememberHours) * 60 * 60 + Number(rememberMinutes) * 60 + Number(rememberSeconds));
             if (Number(valueSeconds) !== 0) {
                 valueSeconds = valueSeconds - 1;
                 document.querySelector(".input-seconds").value = valueSeconds;
@@ -61,6 +74,8 @@ buttonStart.addEventListener("click", (event) => {
 
 buttonPause.addEventListener("click", (event) => {
     event.preventDefault();
+    progressBar.classList.remove("progress-green");
+    progressBar.classList.add("progress-red");
     buttonStart.style.display = "block";
     buttonPause.style.display = "none";
     inputHours.disabled = false;
@@ -71,7 +86,14 @@ buttonPause.addEventListener("click", (event) => {
 
 buttonReset.addEventListener("click", (event) => {
     event.preventDefault();
-    document.querySelector(".input-hours").value = 0;
-    document.querySelector(".input-minutes").value = defaultMinutes;
-    document.querySelector(".input-seconds").value = 0;
+
+    if (rememberHours == null && rememberMinutes == null && rememberSeconds == null) {
+        document.querySelector(".input-hours").value = 0;
+        document.querySelector(".input-minutes").value = defaultMinutes;
+        document.querySelector(".input-seconds").value = 0;
+    } else {
+        document.querySelector(".input-hours").value = rememberHours;
+        document.querySelector(".input-minutes").value = rememberMinutes;
+        document.querySelector(".input-seconds").value = rememberSeconds;
+    }
 })
